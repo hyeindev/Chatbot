@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @SpringBootApplication
-
+@Controller
 public class DemoApplication {
 
 	public static void main(String[] args) {
@@ -17,6 +17,12 @@ public class DemoApplication {
 	}
 
 
+	@RequestMapping("/")
+	@ResponseBody
+	public String testView() {
+
+		return "<hr><h1>Hello world! & spring-loaded</h1><hr>";
+	}
 
 
 

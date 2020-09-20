@@ -1,8 +1,26 @@
+buildscript {
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE'
+		classpath 'org.springframework:springloaded:1.2.5.RELEASE'
+	}
+}
+
+
 plugins {
 	id 'org.springframework.boot' version '2.3.3.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'org.asciidoctor.convert' version '1.5.8'
 	id 'java'
+	id 'idea'
+}
+idea {
+	module {
+		inheritOutputDirs = false
+		outputDir = file("$buildDir/classes/main/")
+	}
 }
 
 group = 'com.example'
@@ -24,6 +42,7 @@ ext {
 }
 
 dependencies {
+	compile group: 'org.springframework', name: 'springloaded', version: '1.2.6.RELEASE'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation 'org.springframework.boot:spring-boot-starter-groovy-templates'
@@ -55,3 +74,4 @@ asciidoctor {
 	inputs.dir snippetsDir
 	dependsOn test
 }
+
